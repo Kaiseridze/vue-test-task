@@ -4,6 +4,7 @@ import type { Root } from "../../models";
 
 export default {
 	state: {
+		defaultCity: "",
 		error: "",
 		isLoading: true,
 		weather: {},
@@ -49,9 +50,19 @@ export default {
 		},
 	},
 	mutations: {
-
+		initialiseStore(state) {
+			if (localStorage.getItem("recentCities")) {
+				state.recentCities = JSON.parse(localStorage.recentCities);
+			}
+			if (localStorage.getItem("defaultCity")) {
+				state.defaultCity = JSON.parse(localStorage.defaultCity);
+			}
+		},
 		updateWeather(state, city: string) {
 			state.weather = city;
+		},
+		updateDefaultCity(state, city: string) {
+			state.defaultCity = city;
 		},
 		updateWeatherRejected(state, message: string) {
 			state.error = message;
@@ -74,6 +85,9 @@ export default {
 		},
 	},
 	getters: {
+		getDefaultCity(state) {
+			return state.defaultCity;
+		},
 		getWeather(state) {
 			return state.weather;
 		},

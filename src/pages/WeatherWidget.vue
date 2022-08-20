@@ -11,27 +11,34 @@ export default defineComponent({
 		"getLoadingStatus",
 		"getRecentCities",
 		"getError",
+		"getDefaultCity",
 	]),
 	data() {
 		return {
 			accessDenied: "",
 		};
 	},
-	created() {
-		!this.getRecentCities.length &&
-			navigator.geolocation.getCurrentPosition(
-				(pos: any) => {
-					const coords = pos.coords;
-					this.$store.dispatch("fetchGeo", {
-						lat: coords.latitude,
-						lon: coords.longitude,
-					});
-				},
-				(err) => {
-					this.accessDenied = `${err.message}. Turn on access to geodata to see the current weather forecast`;
-				},
-			);
+
+	mounted() {
+		this.$store.commit("initialiseStore");
+		if (this.getDefaultCity.length) {
+			return this.$store.dispatch("fetchWeather", this.getDefaultCity);
+		}
+
+		return navigator.geolocation.getCurrentPosition(
+			(pos: any) => {
+				const coords = pos.coords;
+				this.$store.dispatch("fetchGeo", {
+					lat: coords.latitude,
+					lon: coords.longitude,
+				});
+			},
+			(err) => {
+				this.accessDenied = `${err.message}. Turn on access to geodata to see the current weather forecast`;
+			},
+		);
 	},
+
 	components: { AccessDenied, Loader },
 });
 </script>

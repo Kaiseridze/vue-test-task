@@ -14,7 +14,7 @@ export default defineComponent({
 
 <template >
 	<div class="widget_city">
-		<img src="https://img.icons8.com/ios/20/000000/menu-rounded.png" />
+		<img class='widget_city-drag' src="https://img.icons8.com/ios/20/000000/menu-rounded.png" />
 		<h3 @click="dispatchCity(city.name)">{{ city.name }}</h3>
 		<img
 			@click="removeCity(city)"
@@ -26,13 +26,15 @@ export default defineComponent({
 <style>
 .widget_city {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	align-items: center;
-
-	background-color: rgb(206, 206, 206);
+	padding: 5px;
+	background-color: rgb(222, 222, 222);
 	margin-bottom: 10px;
 }
-
+.widget_city-drag{
+	cursor: grab;
+}
 .widget_city h3,
 img {
 	cursor: pointer;

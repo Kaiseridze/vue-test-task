@@ -12,3 +12,14 @@ declare module "@vue/runtime-core" {
 export const store = createStore<Root>({
 	modules: { fetchWeather },
 });
+
+store.subscribe((mutation, state) => {
+	localStorage.setItem(
+		"recentCities",
+		JSON.stringify(state.fetchWeather.recentCities),
+	);
+	localStorage.setItem(
+		"defaultCity",
+		JSON.stringify(state.fetchWeather.defaultCity),
+	);
+});

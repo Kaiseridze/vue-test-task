@@ -14,12 +14,7 @@ const router = createRouter({
 			name: "settings",
 			component: Settings,
 		},
-		{
-			path: "/:pathMatch(.*)*",
-			name: "notFound",
-			redirect: "/",
-		},
 	],
 });
-router.replace({ name: "home" });
+
 export default router;
