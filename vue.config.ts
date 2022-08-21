@@ -1,4 +1,5 @@
 module.exports = {
+	publicPath: "/vue-test-task/",
 	css: {
 		loaderOptions: {
 			sass: {
