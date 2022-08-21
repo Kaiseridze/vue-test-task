@@ -1,5 +1,6 @@
 module.exports = {
-	publicPath: "/vue-test-task/",
+	publicPath:
+		process.env.NODE_ENV === "production" ? "/НАЗВАНИЕ_ПРОЕКТА/" : "/",
 	css: {
 		loaderOptions: {
 			sass: {
