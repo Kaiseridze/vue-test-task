@@ -14,17 +14,26 @@ export default defineComponent({
 			drag: false,
 		};
 	},
+	beforeMount() {
+		!this.getRecentCities.length && this.$router.push("/");
+	},
 	methods: {
 		dispatchCity(city) {
 			if (city.length !== 0) {
 				this.$store.dispatch("fetchWeather", city);
-				this.$store.commit('updateDefaultCity', city)
+				this.$store.commit("updateDefaultCity", city);
 				this.inputValue = "";
 				this.$router.push("/");
 			}
 		},
 		clickButton() {
 			(this.$refs["submitButton"] as any).click();
+		},
+		saveDrag() {
+			localStorage.setItem(
+				"recentCities",
+				JSON.stringify(this.getRecentCities),
+			);
 		},
 		isLetter,
 	},
@@ -62,6 +71,7 @@ export default defineComponent({
 			:list="getRecentCities"
 			item-key="id"
 			:animation="200"
+			@change="saveDrag"
 			forceFallback="false"
 			handle=".widget_city-drag"
 		>
@@ -92,25 +102,27 @@ export default defineComponent({
 	</form>
 </template>
 
-<style>
-.widget_cities {
-	width: 300px;
-	margin: auto;
-}
-.widget_submit {
-	display: flex;
-	justify-content: center;
-}
-input {
-	margin: 0 15px;
+<style lang="scss">
+.widget {
+	&_cities {
+		width: 300px;
+		margin: auto;
+	}
+	&_submit {
+		display: flex;
+		justify-content: center;
+
+		button {
+			display: none;
+			pointer-events: none;
+		}
+		input {
+			margin: 0 15px;
+		}
+	}
 }
 
 .hidden-ghost {
 	opacity: 1;
-}
-
-.widget_submit button {
-	display: none;
-	pointer-events: none;
 }
 </style>

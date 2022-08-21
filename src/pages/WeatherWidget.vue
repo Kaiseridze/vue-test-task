@@ -116,28 +116,29 @@ export default defineComponent({
 	</div>
 </template>
 
-<style>
-.widget_weather_main {
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-}
-.widget_weather_description {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-}
+<style lang="scss">
+.widget {
+	&_weather_main {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		h2 {
+			font-weight: 700;
+			font-size: 32px;
+		}
+	}
+	&_weather_description {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		img {
+			margin-right: 5px;
+		}
+		p {
+			display: flex;
+			align-items: center;
+		}
+	}
 
-.widget_weather_description img {
-	margin-right: 5px;
-}
-
-p {
-	display: flex;
-	align-items: center;
-}
-h2 {
-	font-weight: 700;
-	font-size: 32px;
 }
 </style>

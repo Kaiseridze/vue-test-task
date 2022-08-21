@@ -1,0 +1,31 @@
+@import "./base.css";
+
+#app {
+	position: absolute;
+	overflow: auto;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid #000;
+	height: 500px;
+	width: 400px;
+}
+
+.widget {
+	position: relative;
+	padding: 10px;
+	overflow: auto;
+	&_header {
+		display: flex;
+		justify-content: space-between;
+		h3 {
+			font-weight: 600;
+			letter-spacing: 1px;
+			font-size: 18px;
+			pointer-events: none;
+		}
+		svg:hover {
+			cursor: pointer;
+		}
+	}
+}

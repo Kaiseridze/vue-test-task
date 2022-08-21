@@ -12,9 +12,12 @@ export default defineComponent({
 });
 </script>
 
-<template >
+<template>
 	<div class="widget_city">
-		<img class='widget_city-drag' src="https://img.icons8.com/ios/20/000000/menu-rounded.png" />
+		<img
+			class="widget_city-drag"
+			src="https://img.icons8.com/ios/20/000000/menu-rounded.png"
+		/>
 		<h3 @click="dispatchCity(city.name)">{{ city.name }}</h3>
 		<img
 			@click="removeCity(city)"
@@ -32,7 +35,7 @@ export default defineComponent({
 	background-color: rgb(222, 222, 222);
 	margin-bottom: 10px;
 }
-.widget_city-drag{
+.widget_city-drag {
 	cursor: grab;
 }
 .widget_city h3,
