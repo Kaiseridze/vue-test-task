@@ -1,6 +1,6 @@
 # vue-weather-app
 
-## *[Watch Demo](https://kaiseridze.github.io/vue-test-task/ "Link to demo")*
+## *[Watch Demo](https://kaiseridze.github.io/weatherApp-vue/ "Link to demo")*
 
 ###  Functionality:
 * Fetch geolocation
